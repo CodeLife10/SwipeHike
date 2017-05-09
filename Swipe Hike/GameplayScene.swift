@@ -9,6 +9,16 @@
 import SpriteKit
 
 class GameplayScene: SKScene {
+
+    // declare gestures
+    
+    //swipes
+  //  let swipeTopLeftRec = CustomSwipeRecogniser()
+  //  let swipeBottomLeftRec = CustomSwipeRecogniser()
+  //  let swipeTopRightRec = CustomSwipeRecogniser()
+  //  let swipeBottomRightRec = CustomSwipeRecogniser()
+    
+    let swipeDirection = CustomSwipeRecogniser()
     
     private var bg1: BGClass?
     private var bg2: BGClass?
@@ -22,22 +32,83 @@ class GameplayScene: SKScene {
     private var rgnd2: GNDClass?
     private var rgnd3: GNDClass?
     
+    private var rgnd4: GNDClass?
+    
+    
     private var player: Player?
     
     var constantSpeed:Int = 600
     
-    var lrrl:Int = 0;
-    //var jumpAction:SKAction = SKAction.rotate(byAngle:-3, duration:5);
-    //var jumpToLeft:SKAction = SKAction.rotate(byAngle:-9, duration:3);
-    //var jumpToRight:SKAction = SKAction.rotate(byAngle:9, duration:3);
-    //var jumpAction:SKAction = SKAction.rotate
+    //var lrrl:Int = 0;
     
     private var mainCamera: SKCameraNode?;
     
+    private var itemController = ItemController()
+    
     override func didMove(to view: SKView) {
+        
+        swipeDirection.addTarget(self, action: #selector(GameplayScene.swipeReact) )
+        self.view!.addGestureRecognizer(swipeDirection)
+        
+     //   swipeTopLeftRec.addTarget(self, action: #selector(GameplayScene.swipedToTopLeft) )
+      //  swipeTopLeftRec.directionMade = .DirectionTopLeft
+     //   self.view!.addGestureRecognizer(swipeTopLeftRec)
+        
+    //    swipeBottomLeftRec.addTarget(self, action: #selector(GameplayScene.swipedToBottomLeft) )
+    //    self.view!.addGestureRecognizer(swipeBottomLeftRec)
+        
+    //    swipeTopRightRec.addTarget(self, action: #selector(GameplayScene.swipedToTopRight) )
+    //    self.view!.addGestureRecognizer(swipeTopRightRec)
+        
+    //    swipeBottomRightRec.addTarget(self, action: #selector(GameplayScene.swipedToBottomRight) )
+    //    self.view!.addGestureRecognizer(swipeBottomRightRec)
+        
         initializeGame()
+    }
+    
+    //the functions that get called when swiping...
+    
+    func swipeReact(){
+        if(swipeDirection.directionMade == .DirectionTopLeft || swipeDirection.directionMade == .DirectionBottomLeft){
+            jumpRight()
+        }
+        else if(swipeDirection.directionMade == .DirectionTopRight || swipeDirection.directionMade == .DirectionBottomRight){
+            jumpLeft()
+        }
+    }
+    func swipedToTopLeft(){
+        //reverseSpeed()
+    }
+    func swipedToBottomLeft(){
+        //reverseSpeed()
+    }
+    func swipedToTopRight(){
+        //reverseSpeed()
+    }
+    func swipedToBottomRight(){
+        //reverseSpeed()
+    }
+    
+    //user input
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //reverseGravity()
+        //reverseSpeed()
+        //jumpLeft()
+        //jumpRight()
+        //(turnLeft)
+        //(turnRight)
+        //decide which way to rotate?
+        // if lrrl == 0{
+        //     player?.run(jumpToRight)
+        //     lrrl = 1
+        // }
+        // else{
+        //     player?.run(jumpToLeft)
+        //     lrrl = 0
+        // }
         
     }
+    
     override func update(_ currentTime: TimeInterval) {
         //maintain constant speed?
         player!.physicsBody?.velocity = CGVector(dx: constantSpeed, dy: 0)
@@ -45,23 +116,7 @@ class GameplayScene: SKScene {
         manageBGandG()
         managePlayer()
     }
-    
-    //user input
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //reverseGravity()
-        reverseSpeed()
-        
-        //decide which way to rotate?
-       // if lrrl == 0{
-       //     player?.run(jumpToRight)
-       //     lrrl = 1
-       // }
-       // else{
-       //     player?.run(jumpToLeft)
-       //     lrrl = 0
-       // }
-        
-    }
+
     private func initializeGame(){
         //set gravity to zero?
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -84,12 +139,17 @@ class GameplayScene: SKScene {
         rgnd2 = childNode(withName: "rGND2") as? GNDClass!
         rgnd3 = childNode(withName: "rGND3") as? GNDClass!
         
+        rgnd4 = childNode(withName: "rGND4") as? GNDClass!
+        rgnd4?.initializeGND()
+        
         rgnd1?.initializeGND()
         rgnd2?.initializeGND()
         rgnd3?.initializeGND()
         
         player = childNode(withName: "Player") as? Player!
         player?.initializePlayer()
+        
+        //Timer.scheduledTimer(timeInterval: TimeInterval(itemController.randomBetweenNumbers(firstNum: 1, secondNum: 3)), target: self, selector: #selector(GameplayScene.spawnItems), userInfo: nil, repeats: true)
         
     }
     
@@ -112,6 +172,7 @@ class GameplayScene: SKScene {
         rgnd1?.moveGND(camera: mainCamera!)
         rgnd2?.moveGND(camera: mainCamera!)
         rgnd3?.moveGND(camera: mainCamera!)
+        rgnd4?.moveGND(camera: mainCamera!)
     }
     
     private func reverseGravity(){
@@ -121,5 +182,17 @@ class GameplayScene: SKScene {
     
     private func reverseSpeed(){
         constantSpeed *= -1;
+    }
+    
+    private func jumpLeft(){
+        constantSpeed = -2000
+    }
+    
+    private func jumpRight(){
+        constantSpeed = 2000
+    }
+    
+    func spawnItems() {
+        self.scene?.addChild(itemController.spawnItems(camera: mainCamera!))
     }
 }

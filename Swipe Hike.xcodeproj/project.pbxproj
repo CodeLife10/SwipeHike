@@ -20,6 +20,9 @@
 		E35CFEF51EBFE36100A89DDD /* GNDClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEF41EBFE36100A89DDD /* GNDClass.swift */; };
 		E35CFEF71EC0AB8C00A89DDD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEF61EC0AB8B00A89DDD /* Player.swift */; };
 		E35CFEF91EC0AC2800A89DDD /* tPlayer.png in Resources */ = {isa = PBXBuildFile; fileRef = E35CFEF81EC0AC2800A89DDD /* tPlayer.png */; };
+		E35CFEFB1EC1F5E800A89DDD /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */; };
+		E35CFEFD1EC1FEE800A89DDD /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = E35CFEFC1EC1FEE800A89DDD /* Coin.png */; };
+		E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,10 @@
 		E35CFEF41EBFE36100A89DDD /* GNDClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNDClass.swift; sourceTree = "<group>"; };
 		E35CFEF61EC0AB8B00A89DDD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E35CFEF81EC0AC2800A89DDD /* tPlayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tPlayer.png; sourceTree = "<group>"; };
+		E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		E35CFEFC1EC1FEE800A89DDD /* Coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin.png; sourceTree = "<group>"; };
+		E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwipeRecogniser.swift; sourceTree = "<group>"; };
+		E35CFF001EC22BCA00A89DDD /* Swipe Hike-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swipe Hike-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +113,9 @@
 				E35CFEF21EBFDE2300A89DDD /* BGClass.swift */,
 				E35CFEF41EBFE36100A89DDD /* GNDClass.swift */,
 				E35CFEF61EC0AB8B00A89DDD /* Player.swift */,
+				E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */,
+				E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */,
+				E35CFF001EC22BCA00A89DDD /* Swipe Hike-Bridging-Header.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -116,6 +126,7 @@
 				E35CFEF01EBFC56B00A89DDD /* GND1.png */,
 				E35CFEEE1EBFBDD300A89DDD /* BG1.png */,
 				E35CFEF81EC0AC2800A89DDD /* tPlayer.png */,
+				E35CFEFC1EC1FEE800A89DDD /* Coin.png */,
 			);
 			name = png;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 					E35CFEC81EBFAF4800A89DDD = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = KDDJ82V72V;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -184,6 +196,7 @@
 				E35CFEEF1EBFBDD300A89DDD /* BG1.png in Resources */,
 				E35CFEF91EC0AC2800A89DDD /* tPlayer.png in Resources */,
 				E35CFEDA1EBFAF4900A89DDD /* Assets.xcassets in Resources */,
+				E35CFEFD1EC1FEE800A89DDD /* Coin.png in Resources */,
 				E35CFEF11EBFC56B00A89DDD /* GND1.png in Resources */,
 				E35CFEDD1EBFAF4900A89DDD /* LaunchScreen.storyboard in Resources */,
 				E35CFEE81EBFB3DD00A89DDD /* GameplayScene.sks in Resources */,
@@ -197,7 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E35CFEFB1EC1F5E800A89DDD /* ItemController.swift in Sources */,
 				E35CFEEA1EBFB45700A89DDD /* GameplayScene.swift in Sources */,
+				E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */,
 				E35CFED51EBFAF4800A89DDD /* GameViewController.swift in Sources */,
 				E35CFECD1EBFAF4800A89DDD /* AppDelegate.swift in Sources */,
 				E35CFEF31EBFDE2300A89DDD /* BGClass.swift in Sources */,
@@ -327,11 +342,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = KDDJ82V72V;
 				INFOPLIST_FILE = "Swipe Hike/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.C10.Swipe-Hike";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swipe Hike/Swipe Hike-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -340,11 +358,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = KDDJ82V72V;
 				INFOPLIST_FILE = "Swipe Hike/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.C10.Swipe-Hike";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swipe Hike/Swipe Hike-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

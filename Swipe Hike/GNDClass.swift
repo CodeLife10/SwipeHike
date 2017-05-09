@@ -14,6 +14,7 @@ class GNDClass: SKSpriteNode {
         physicsBody = SKPhysicsBody(rectangleOf: self.size)
         physicsBody?.affectedByGravity = false
         physicsBody?.restitution = 0.0;
+        physicsBody?.usesPreciseCollisionDetection = true
         
         physicsBody?.isDynamic = false
         physicsBody?.categoryBitMask = ColliderType.GND
