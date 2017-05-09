@@ -36,6 +36,7 @@ class Player: SKSpriteNode {
         physicsBody?.affectedByGravity = true
         //stop bounce?
         physicsBody?.restitution = 0.0
+        physicsBody?.usesPreciseCollisionDetection = true
         physicsBody?.allowsRotation = true
         physicsBody?.angularVelocity = 0.0
         physicsBody?.categoryBitMask = ColliderType.PLAYER
