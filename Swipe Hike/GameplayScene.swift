@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameplayScene: SKScene {
+class GameplayScene: SKScene, SKPhysicsContactDelegate {
 
     // declare gestures
     
@@ -109,6 +109,23 @@ class GameplayScene: SKScene {
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
+        
+        if contact.bodyA.node?.name == "Player"{
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else{
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.node?.name == "Player" && secondBody.node?.name == "Coin"{
+            
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         //maintain constant speed?
         player!.physicsBody?.velocity = CGVector(dx: constantSpeed, dy: 0)
@@ -154,7 +171,17 @@ class GameplayScene: SKScene {
     }
     
     private func manageCamera(){
-        self.mainCamera?.position.y += 2.5
+        self.mainCamera?.position.y = ((self.player?.position.y)! + 400)
+        
+        if((self.player?.position.x)!) > ((self.mainCamera?.position.x)! + 125){
+            self.mainCamera?.position.x = (self.player?.position.x)! - 125
+        }
+        if((self.player?.position.x)!) < ((self.mainCamera?.position.x)! - 125){
+            self.mainCamera?.position.x = (self.player?.position.x)! + 125
+        }
+        //else if((self.player?.position.x)!) == ((self.mainCamera?.position.x)! + 100){
+         //   self.mainCamera?.position.x = (self.mainCamera?.position.x)!
+        //}
     }
     
     private func managePlayer(){
@@ -185,11 +212,11 @@ class GameplayScene: SKScene {
     }
     
     private func jumpLeft(){
-        constantSpeed = -2000
+        constantSpeed = -600
     }
     
     private func jumpRight(){
-        constantSpeed = 2000
+        constantSpeed = 600
     }
     
     func spawnItems() {
