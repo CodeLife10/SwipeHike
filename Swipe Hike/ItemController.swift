@@ -26,7 +26,8 @@ class ItemController {
         }
         
         item!.physicsBody?.affectedByGravity = false
-        item?.physicsBody?.categoryBitMask = ColliderType.DANGER
+        //hmm
+        item?.physicsBody?.categoryBitMask = PhysicsCategory.Danger
         
         item?.zPosition = 4
         item?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
