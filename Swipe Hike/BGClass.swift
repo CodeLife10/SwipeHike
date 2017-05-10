@@ -15,4 +15,9 @@ class BGClass: SKSpriteNode {
             self.position.y += self.size.height * 3
         }
     }
+    func move(){
+        //(-1)
+        self.position.y += -1
+    }
+
 }
