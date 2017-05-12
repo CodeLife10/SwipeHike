@@ -21,16 +21,18 @@ struct PhysicsCategory {
 
 
 class GameplayScene: SKScene, SKPhysicsContactDelegate {
-
     // declare gestures
     
-    //swipes
-  //  let swipeTopLeftRec = CustomSwipeRecogniser()
-  //  let swipeBottomLeftRec = CustomSwipeRecogniser()
-  //  let swipeTopRightRec = CustomSwipeRecogniser()
-  //  let swipeBottomRightRec = CustomSwipeRecogniser()
-    
     let swipeDirection = CustomSwipeRecogniser()
+    
+    let flyweightFactory = FlyWeightFactory()
+    private var wall: Wall?
+    
+    let levelFactory = LevelFactory()
+    private var level: Levels?
+    private var SA: [String]?
+    private var orderNumber: Int?
+    
     
     private var cloudbg1: BGClass?
     private var cloudbg2: BGClass?
@@ -47,7 +49,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     private var rgnd4: GNDClass?
     
     
-    private var cat : Player?    
+    //private var cat : Player?
     private var player: Player?
     
     var constantSpeed:Int = -600
@@ -65,6 +67,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         self.view!.addGestureRecognizer(swipeDirection)
 
         initializeGame()
+        setupWalls(w: wall!, playerPos: (player?.position.y)!)
     }
     
     //the functions that get called when swiping...
@@ -94,26 +97,8 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     //user input
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //reverseGravity()
-        //reverseSpeed()
-        //jumpLeft()
-        //jumpRight()
-        //(turnLeft)
-        //(turnRight)
-        //decide which way to rotate?
-        // if lrrl == 0{
-        //     player?.run(jumpToRight)
-        //     lrrl = 1
-        // }
-        // else{
-        //     player?.run(jumpToLeft)
-        //     lrrl = 0
-        // }
         
     }
-    
-   
-
     
     override func update(_ currentTime: TimeInterval) {
         //maintain constant speed?
@@ -125,8 +110,10 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
 
     private func initializeGame(){
         //set gravity to zero?
+        orderNumber = 0
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-    
+        
+        
         mainCamera = childNode(withName: "MainCamera") as? SKCameraNode!
         
         cloudbg1 = childNode(withName: "cloudBG1") as? BGClass!
@@ -136,6 +123,11 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         gnd1 = childNode(withName: "GND1") as? GNDClass!
         gnd2 = childNode(withName: "GND2") as? GNDClass!
         gnd3 = childNode(withName: "GND3") as? GNDClass!
+        
+        wall = flyweightFactory.initialiseWall(wallN: "SCRATCHPOST")
+        
+        level = levelFactory.initialiseLevel(levelN: "FirstLevel")
+        SA = level?.getLevelFile()
         
         gnd1?.initializeGND()
         gnd2?.initializeGND()
@@ -155,15 +147,24 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         player = childNode(withName: "Player") as? Player!
         player?.initializePlayer()
         
+        //player?.position.y -------<
+        //guard let n = NSNumberFormatter().number(from: str) else { return }
         
-       
         //cat = childNode(withName: "Player2") as? Player!
         //cat?.initializePlayer()
         //cat?.position = CGPoint(x:self.frame.midX, y:self.frame.midY)
         //addChild(cat)
         
         //Timer.scheduledTimer(timeInterval: TimeInterval(itemController.randomBetweenNumbers(firstNum: 1, secondNum: 3)), target: self, selector: #selector(GameplayScene.spawnItems), userInfo: nil, repeats: true)
-        
+    }
+    
+    private func setupWalls(w: Wall, playerPos: CGFloat){ //orderN: Int
+        let n = NumberFormatter().number(from: SA![orderNumber!])
+        let n2 = NumberFormatter().number(from: SA![orderNumber!+1])
+        let f = CGFloat(n!)
+        let f2 = CGFloat(n2!)
+        addChild(w.placeWall(xP: f, yP: f2)!)
+        orderNumber = orderNumber! + 2
     }
     
     private func manageCamera(){
@@ -195,7 +196,6 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         
     }
     private func manageBGandG(){
-        
         cloudbg1?.moveBG(camera: mainCamera!)
         cloudbg2?.moveBG(camera: mainCamera!)
         cloudbg3?.moveBG(camera: mainCamera!)
@@ -235,23 +235,6 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.addChild(itemController.spawnItems(camera: mainCamera!))
     }
     
-  //  func didBegin(_ contact: SKPhysicsContact) {
-   //     var firstBody = SKPhysicsBody()
-    //    var secondBody = SKPhysicsBody()
-    //
-    //    if contact.bodyA.node?.name == "Player"{
-    //        firstBody = contact.bodyA
-    //        secondBody = contact.bodyB
-    //    } else{
-    //        firstBody = contact.bodyB
-    //        secondBody = contact.bodyA
-    //    }
-        
-    //    if firstBody.node?.name == "Player" && secondBody.node?.name != "Player"{
-    //        playerDidCollideWithWall()
-    //    }
-    //}
-    
     func didBegin(_ contact: SKPhysicsContact) {
         
         // 1
@@ -276,12 +259,9 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         
     }
 
-    
-    
     func playerDidCollideWithWall() {
         player?.animateCatClimb()
-        
-        
+    
         //monstersDestroyed += 1
         //if (monstersDestroyed > 100) {
         //    let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
@@ -289,6 +269,4 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         //    self.view?.presentScene(gameOverScene, transition: reveal)
         //}
     }
-
-    
 }
