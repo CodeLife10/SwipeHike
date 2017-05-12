@@ -9,7 +9,7 @@
 import SpriteKit
 
 class GNDClass: SKSpriteNode {
-    
+    //now redundant
     func initializeGND(){
         physicsBody = SKPhysicsBody(rectangleOf: self.size)
         physicsBody?.affectedByGravity = false
@@ -69,7 +69,7 @@ class ScratchPost : Wall {
         var wallName = "SCRATCHPOST"
 }
 
-class FlyWeightFactory {
+class WallFlyWeightFactory {
     func initialiseWall(wallN: String) -> Wall?{
         if(wallN == "SCRATCHPOST"){
             return ScratchPost()

@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E35A8AF61EC5464800CA942E /* FirstLevel.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF51EC5464800CA942E /* FirstLevel.txt */; };
+		E35A8AF61EC5464800CA942E /* FirstLevelWalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */; };
+		E35A8AF81EC5F81B00CA942E /* Danger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A8AF71EC5F81B00CA942E /* Danger.swift */; };
+		E35A8AFA1EC5FE4100CA942E /* FirstLevelDangers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */; };
+		E35A8AFC1EC600C100CA942E /* Spike1.png in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AFB1EC600C000CA942E /* Spike1.png */; };
 		E35CFECD1EBFAF4800A89DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFECC1EBFAF4800A89DDD /* AppDelegate.swift */; };
 		E35CFED51EBFAF4800A89DDD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFED41EBFAF4800A89DDD /* GameViewController.swift */; };
 		E35CFED81EBFAF4900A89DDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35CFED61EBFAF4900A89DDD /* Main.storyboard */; };
@@ -30,7 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E35A8AF51EC5464800CA942E /* FirstLevel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevel.txt; sourceTree = "<group>"; };
+		E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelWalls.txt; sourceTree = "<group>"; };
+		E35A8AF71EC5F81B00CA942E /* Danger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
+		E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelDangers.txt; sourceTree = "<group>"; };
+		E35A8AFB1EC600C000CA942E /* Spike1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spike1.png; sourceTree = "<group>"; };
 		E35CFEC91EBFAF4800A89DDD /* Swipe Hike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Hike.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35CFECC1EBFAF4800A89DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E35CFED41EBFAF4800A89DDD /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				E379B1A31EC5307000B02D1E /* Levels.swift */,
-				E35A8AF51EC5464800CA942E /* FirstLevel.txt */,
+				E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */,
+				E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 				E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */,
 				E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */,
 				E35CFF001EC22BCA00A89DDD /* Swipe Hike-Bridging-Header.h */,
+				E35A8AF71EC5F81B00CA942E /* Danger.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 				E35CFEF01EBFC56B00A89DDD /* GND1.png */,
 				E35CFEEE1EBFBDD300A89DDD /* BG1.png */,
 				E35CFEFC1EC1FEE800A89DDD /* Coin.png */,
+				E35A8AFB1EC600C000CA942E /* Spike1.png */,
 				E379B1A11EC3B38400B02D1E /* tempJump.png */,
 			);
 			name = png;
@@ -206,11 +215,13 @@
 			files = (
 				E35CFED81EBFAF4900A89DDD /* Main.storyboard in Resources */,
 				E35CFEEF1EBFBDD300A89DDD /* BG1.png in Resources */,
+				E35A8AFC1EC600C100CA942E /* Spike1.png in Resources */,
 				E35CFEDA1EBFAF4900A89DDD /* Assets.xcassets in Resources */,
 				E35CFEFD1EC1FEE800A89DDD /* Coin.png in Resources */,
 				E35CFEF11EBFC56B00A89DDD /* GND1.png in Resources */,
 				E379B1A21EC3B38500B02D1E /* tempJump.png in Resources */,
-				E35A8AF61EC5464800CA942E /* FirstLevel.txt in Resources */,
+				E35A8AF61EC5464800CA942E /* FirstLevelWalls.txt in Resources */,
+				E35A8AFA1EC5FE4100CA942E /* FirstLevelDangers.txt in Resources */,
 				E35CFEDD1EBFAF4900A89DDD /* LaunchScreen.storyboard in Resources */,
 				E379B17B1EC3389B00B02D1E /* CloudBNG.png in Resources */,
 				E379B1A01EC38CC200B02D1E /* myAtlas1.atlas in Resources */,
@@ -231,6 +242,7 @@
 				E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */,
 				E35CFED51EBFAF4800A89DDD /* GameViewController.swift in Sources */,
 				E35CFECD1EBFAF4800A89DDD /* AppDelegate.swift in Sources */,
+				E35A8AF81EC5F81B00CA942E /* Danger.swift in Sources */,
 				E35CFEF31EBFDE2300A89DDD /* BGClass.swift in Sources */,
 				E35CFEF71EC0AB8C00A89DDD /* Player.swift in Sources */,
 				E35CFEF51EBFE36100A89DDD /* GNDClass.swift in Sources */,

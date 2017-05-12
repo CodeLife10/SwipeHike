@@ -11,7 +11,8 @@ import Foundation
 protocol Levels {
     //var orderNumber: Int {get set}
     //var arrayOfStrings: [String]? {get set}
-    var fileName: String {get}
+    var wallFileName: String {get}
+    var dangerFileName: String {get}
     //func restartHappens()
     //func getLevelFile(fileName: String)
     //func restartHappens()
@@ -23,11 +24,27 @@ extension Levels{
     func restartHappens() -> Int{
         return 0
     }
-    func getLevelFile() -> [String]?{
+    func getLevelWalls() -> [String]?{
         var arrayOfStrings: [String]?
         do {
             // This solution assumes  you've got the file in your bundle
-            if let path = Bundle.main.path(forResource: fileName, ofType: "txt"){
+            if let path = Bundle.main.path(forResource: wallFileName, ofType: "txt"){
+                let data = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
+                // Use `n` here
+                arrayOfStrings = data.components(separatedBy: "\n")
+                print(arrayOfStrings ?? "unkown")
+            }
+        } catch let err as NSError {
+            // do something with Error
+            print(err)
+        }
+        return arrayOfStrings
+    }
+    func getLevelDangers() -> [String]?{
+        var arrayOfStrings: [String]?
+        do {
+            // This solution assumes  you've got the file in your bundle
+            if let path = Bundle.main.path(forResource: dangerFileName, ofType: "txt"){
                 let data = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
                 // Use `n` here
                 arrayOfStrings = data.components(separatedBy: "\n")
@@ -42,7 +59,8 @@ extension Levels{
 }
 
 class Level1: Levels {
-    var fileName: String = "FirstLevel"
+    var wallFileName: String = "FirstLevelWalls"
+    var dangerFileName: String = "FirstLevelDangers"
 }
 
 class LevelFactory {

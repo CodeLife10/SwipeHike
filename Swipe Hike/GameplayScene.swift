@@ -25,12 +25,15 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     let swipeDirection = CustomSwipeRecogniser()
     
-    let flyweightFactory = FlyWeightFactory()
+    let wallFlyweightFactory = WallFlyWeightFactory()
     private var wall: Wall?
+    let dangerFlyweightFactory = DangerFlyWeightFactory()
+    private var danger: Danger?
     
     let levelFactory = LevelFactory()
     private var level: Levels?
-    private var SA: [String]?
+    private var SWA: [String]?
+    private var SDA: [String]?
     private var orderNumber: Int?
     
     
@@ -67,7 +70,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         self.view!.addGestureRecognizer(swipeDirection)
 
         initializeGame()
-        setupWalls(w: wall!, playerPos: (player?.position.y)!)
+
     }
     
     //the functions that get called when swiping...
@@ -106,6 +109,13 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         manageCamera()
         manageBGandG()
         managePlayer()
+        if orderNumber! < ((SWA?.count)!-1) {
+            //will have to move
+            setupWalls(w: wall!, playerPos: (player?.position.y)!)
+        }
+        if (orderNumber! + (((SDA?.count)!*2)-1)-(((SDA?.count-1)!/2)-1)) < ((SDA?.count)-1) {
+            setupDangers(d: danger!, playerPos: (player?.position.y)!)
+        }
     }
 
     private func initializeGame(){
@@ -124,10 +134,11 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         gnd2 = childNode(withName: "GND2") as? GNDClass!
         gnd3 = childNode(withName: "GND3") as? GNDClass!
         
-        wall = flyweightFactory.initialiseWall(wallN: "SCRATCHPOST")
-        
+        wall = wallFlyweightFactory.initialiseWall(wallN: "SCRATCHPOST")
+        danger = dangerFlyweightFactory.initialiseDanger(dangerN: "SPIKE")
         level = levelFactory.initialiseLevel(levelN: "FirstLevel")
-        SA = level?.getLevelFile()
+        SWA = level?.getLevelWalls()
+        SDA = level?.getLevelDangers()
         
         gnd1?.initializeGND()
         gnd2?.initializeGND()
@@ -159,13 +170,24 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupWalls(w: Wall, playerPos: CGFloat){ //orderN: Int
-        let n = NumberFormatter().number(from: SA![orderNumber!])
-        let n2 = NumberFormatter().number(from: SA![orderNumber!+1])
+        let n = NumberFormatter().number(from: SWA![orderNumber!])
+        let n2 = NumberFormatter().number(from: SWA![orderNumber!+1])
         let f = CGFloat(n!)
         let f2 = CGFloat(n2!)
         addChild(w.placeWall(xP: f, yP: f2)!)
+        //orderNumber = orderNumber! + 2
+    }
+    
+    private func setupDangers(d: Danger, playerPos: CGFloat){ //orderN: Int
+        let n = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2)])
+        let n2 = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2) + 1])
+        let n3 = Int(SDA![(orderNumber!*2)-(orderNumber!/2)+2])
+        let f = CGFloat(n!)
+        let f2 = CGFloat(n2!)
+        addChild(d.placeDanger(xP: f, yP: f2, direction: n3!)!)
         orderNumber = orderNumber! + 2
     }
+    
     
     private func manageCamera(){
         self.mainCamera?.position.y = ((self.player?.position.y)! + 400)
@@ -256,6 +278,13 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
                 playerDidCollideWithWall()//projectile: projectile, monster: monster)
             //}
         }
+        else if ((firstBody.categoryBitMask & PhysicsCategory.Player != 0) &&
+            (secondBody.categoryBitMask & PhysicsCategory.Danger != 0)) {
+            //if let monster = firstBody.node as? SKSpriteNode, let
+            //    projectile = secondBody.node as? SKSpriteNode {
+            playerDidCollideWithDanger()//projectile: projectile, monster: monster)
+            //}
+        }
         
     }
 
@@ -268,5 +297,37 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         //   let gameOverScene = GameOverScene(size: self.size, won: true)
         //    self.view?.presentScene(gameOverScene, transition: reveal)
         //}
+    }
+    
+    func playerDidCollideWithDanger(){
+        //player?.animateDeath()
+        restartScene()
+    }
+    
+    func restartScene(){
+        self.removeAllChildren()
+        self.removeAllActions()
+        let scene = GameplayScene(fileNamed: "GameplayScene") // Whichever scene you want to restart (and are in)
+            scene?.scaleMode = .aspectFill
+        let animation = SKTransition.crossFade(withDuration: 0.5) // ...Add transition if you like
+        self.view?.presentScene(scene!, transition: animation)
+        
+        
+       // if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+          //  if let scene = GameplayScene(fileNamed: "GameplayScene") {
+                // Set the scale mode to scale to fit the window
+           //     scene.scaleMode = .aspectFill
+                
+                // Present the scene
+            //    view.presentScene(scene)
+           // }
+            
+            //view.ignoresSiblingOrder = true
+            
+            //view.showsPhysics = true
+            
+           // view.showsFPS = true
+           // view.showsNodeCount = true
     }
 }
