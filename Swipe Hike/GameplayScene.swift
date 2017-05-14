@@ -25,32 +25,42 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     let swipeDirection = CustomSwipeRecogniser()
     
-    let wallFlyweightFactory = WallFlyWeightFactory()
-    private var wall: Wall?
+    //let wallFlyweightFactory = WallFlyWeightFactory()
+    //private var wall: Wall?
     let dangerFlyweightFactory = DangerFlyWeightFactory()
     private var danger: Danger?
     
     let levelFactory = LevelFactory()
+    
+    
     private var level: Levels?
     private var SWA: [String]?
     private var SDA: [String]?
-    private var orderNumber: Int?
+
+    var curD: Int?
     
+    
+    //let withPattern = WithPattern()
+   // let flyweightWallFactory = FlyweightWallFactory
+    
+    
+    //let textures: [SKTexture] = [SKTexture(imageNamed: "GND1")]
     
     private var cloudbg1: BGClass?
     private var cloudbg2: BGClass?
     private var cloudbg3: BGClass?
     
-    private var gnd1: GNDClass?
-    private var gnd2: GNDClass?
-    private var gnd3: GNDClass?
+    //private var gnd1: GNDClass?
+   // private var gnd2: GNDClass?
+    //private var gnd3: GNDClass?
+    var walls = [FlyweightWall]()
+    let textures: [SKTexture] = [SKTexture(imageNamed: "GND1")]
+    //private var rgnd1: GNDClass?
+    //private var rgnd2: GNDClass?
+   // private var rgnd3: GNDClass?
     
-    private var rgnd1: GNDClass?
-    private var rgnd2: GNDClass?
-    private var rgnd3: GNDClass?
-    
-    private var rgnd4: GNDClass?
-    
+    //private var rgnd4: GNDClass?
+   
     
     //private var cat : Player?
     private var player: Player?
@@ -61,7 +71,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     private var mainCamera: SKCameraNode?;
     
-    private var itemController = ItemController()
+    //private var itemController = ItemController()
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -109,18 +119,92 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         manageCamera()
         manageBGandG()
         managePlayer()
-        if orderNumber! < ((SWA?.count)!-1) {
+        
+        updateWallsPosition()
+       // if orderNumber! < ((SWA?.count)!-1) {
             //will have to move
-            setupWalls(w: wall!, playerPos: (player?.position.y)!)
-        }
-        if (orderNumber! + (((SDA?.count)!*2)-1)-(((SDA?.count-1)!/2)-1)) < ((SDA?.count)-1) {
-            setupDangers(d: danger!, playerPos: (player?.position.y)!)
-        }
+          //  setupWalls(w: wall!, playerPos: (player?.position.y)!)
+       // }
+        // /2
+        //if orderNumber! < ((SDA?.count)!-1) {
+           // setupDangers(d: danger!, playerPos: (player?.position.y)!)
+        //}
     }
 
+    /*
+    private func setupWalls(w: Wall, playerPos: CGFloat){ //orderN: Int
+        let n = NumberFormatter().number(from: SWA![orderNumber!])
+        let n2 = NumberFormatter().number(from: SWA![orderNumber!+1])
+        let n3 = NumberFormatter().number(from: SWA![orderNumber!+2])
+        let f = CGFloat(n!)
+        let f2 = CGFloat(n2!)
+        let f3 = CGFloat(n3!)
+        addChild(w.placeWall(xP: f, yP: f2, height: f3)!)
+        orderNumber = orderNumber! + 3
+    }
+    */
+    func manageWalls(){
+        //addChild(w.placeWall(xP: f, yP: f2, height: f3)!)
+        //orderNumber = orderNumber! + 3
+        //var sprites = [SKSpriteNode]()
+        var orderNumber: Int? = 0
+        for _ in 1...(((SWA?.count)!-1)/3){
+            //still to use
+            let n = NumberFormatter().number(from: SWA![orderNumber!])
+            let n2 = NumberFormatter().number(from: SWA![orderNumber!+1])
+            let n3 = NumberFormatter().number(from: SWA![orderNumber!+2])
+            let f = CGFloat(n!)
+            let f2 = CGFloat(n2!)
+            let f3 = CGFloat(n3!)
+            
+            //let idx = Int(arc4random_uniform(UInt32(self.colors.count-1)))
+            
+            //walls.append(FlyweightWallFactory.getFlyweightWall(texture: self.textures[0]))
+            //walls[index].display(xPos: 0, yPos: 0, height: 200, width: 500)
+            
+            //var sprite = walls[index]
+            //addChild(walls[index].sprite!)
+            //j++
+            //var sprite = SKSpriteNode()
+            //let sprite = SKSpriteNode()
+            let fClass = FlyweightWallFactory.getFlyweightWall(texture: self.textures[0])
+            fClass.display(xPos: f, yPos: f2, height: f3, width: 200)
+            let spriteCopy = fClass.sprite.copy() as! SKSpriteNode
+            addChild(spriteCopy)
+            orderNumber = orderNumber! + 3
+        }
+    }
+    /*
+    //var walls = [FlyweightWall]()
+    override func run() -> [FlyweightWall]{
+        //var j:Int = 0
+        
+        for index in 0...5{
+            //let idx = Int(arc4random_uniform(UInt32(self.colors.count-1)))
+            walls.append(FlyweightWallFactory.getFlyweightWall(texture: self.textures[0]))
+            walls[index].display(xPos: 0, yPos: 0, height: 200, width: 500)
+            //j++
+        }
+        //print("\(j) rects generated")
+        //print("nb Map: \(FlyweightRectFactory.rectsMap.count)")
+    }
+    */
+    func updateWallsPosition(){
+        let fClass = FlyweightWallFactory.getFlyweightWall(texture: self.textures[0])
+        fClass.moveY()
+       // for index in 0...5{
+            //walls[index].moveY()
+       // }
+    }
+    
+    
+    
+    
+    
+    
     private func initializeGame(){
+        //curD = (((SDA?.count)!*2)-1)-(((SDA?.count-1)!/2)-1)
         //set gravity to zero?
-        orderNumber = 0
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
         
@@ -130,34 +214,37 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         cloudbg2 = childNode(withName: "cloudBG2") as? BGClass!
         cloudbg3 = childNode(withName: "cloudBG3") as? BGClass!
         
-        gnd1 = childNode(withName: "GND1") as? GNDClass!
-        gnd2 = childNode(withName: "GND2") as? GNDClass!
-        gnd3 = childNode(withName: "GND3") as? GNDClass!
+       // gnd1 = childNode(withName: "GND1") as? GNDClass!
+       // gnd2 = childNode(withName: "GND2") as? GNDClass!
+       // gnd3 = childNode(withName: "GND3") as? GNDClass!
         
-        wall = wallFlyweightFactory.initialiseWall(wallN: "SCRATCHPOST")
+        
+        
+        
+       // wall = wallFlyweightFactory.initialiseWall(wallN: "SCRATCHPOST")
         danger = dangerFlyweightFactory.initialiseDanger(dangerN: "SPIKE")
         level = levelFactory.initialiseLevel(levelN: "FirstLevel")
         SWA = level?.getLevelWalls()
         SDA = level?.getLevelDangers()
         
-        gnd1?.initializeGND()
-        gnd2?.initializeGND()
-        gnd3?.initializeGND()
+       // gnd1?.initializeGND()
+       // gnd2?.initializeGND()
+       // gnd3?.initializeGND()
         
-        rgnd1 = childNode(withName: "rGND1") as? GNDClass!
-        rgnd2 = childNode(withName: "rGND2") as? GNDClass!
-        rgnd3 = childNode(withName: "rGND3") as? GNDClass!
+       // rgnd1 = childNode(withName: "rGND1") as? GNDClass!
+      //  rgnd2 = childNode(withName: "rGND2") as? GNDClass!
+      //  rgnd3 = childNode(withName: "rGND3") as? GNDClass!
         
-        rgnd4 = childNode(withName: "rGND4") as? GNDClass!
-        rgnd4?.initializeGND()
+      //  rgnd4 = childNode(withName: "rGND4") as? GNDClass!
+      //  rgnd4?.initializeGND()
         
-        rgnd1?.initializeGND()
-        rgnd2?.initializeGND()
-        rgnd3?.initializeGND()
+       // rgnd1?.initializeGND()
+      //  rgnd2?.initializeGND()
+      //  rgnd3?.initializeGND()
         
         player = childNode(withName: "Player") as? Player!
         player?.initializePlayer()
-        
+        manageWalls()
         //player?.position.y -------<
         //guard let n = NSNumberFormatter().number(from: str) else { return }
         
@@ -168,26 +255,33 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         
         //Timer.scheduledTimer(timeInterval: TimeInterval(itemController.randomBetweenNumbers(firstNum: 1, secondNum: 3)), target: self, selector: #selector(GameplayScene.spawnItems), userInfo: nil, repeats: true)
     }
-    
+    /*
     private func setupWalls(w: Wall, playerPos: CGFloat){ //orderN: Int
         let n = NumberFormatter().number(from: SWA![orderNumber!])
         let n2 = NumberFormatter().number(from: SWA![orderNumber!+1])
+        let n3 = NumberFormatter().number(from: SWA![orderNumber!+2])
         let f = CGFloat(n!)
         let f2 = CGFloat(n2!)
-        addChild(w.placeWall(xP: f, yP: f2)!)
-        //orderNumber = orderNumber! + 2
+        let f3 = CGFloat(n3!)
+        addChild(w.placeWall(xP: f, yP: f2, height: f3)!)
+        orderNumber = orderNumber! + 3
     }
-    
+    */
+    /*
     private func setupDangers(d: Danger, playerPos: CGFloat){ //orderN: Int
-        let n = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2)])
-        let n2 = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2) + 1])
-        let n3 = Int(SDA![(orderNumber!*2)-(orderNumber!/2)+2])
+        //let n = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2)])
+       // let n2 = NumberFormatter().number(from: SDA![(orderNumber!*2)-(orderNumber!/2) + 1])
+       //let n3 = Int(SDA![(orderNumber!*2)-(orderNumber!/2)+2])
+        let n = NumberFormatter().number(from: SDA![orderNumber!])
+        let n2 = NumberFormatter().number(from: SDA![orderNumber!+1])
+        let n3 = Int(SDA![orderNumber!+2])
+        
         let f = CGFloat(n!)
         let f2 = CGFloat(n2!)
         addChild(d.placeDanger(xP: f, yP: f2, direction: n3!)!)
-        orderNumber = orderNumber! + 2
+        orderNumber = orderNumber! + 3
     }
-    
+    */
     
     private func manageCamera(){
         self.mainCamera?.position.y = ((self.player?.position.y)! + 400)
@@ -205,13 +299,16 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     private func managePlayer(){
             player?.move()
-            gnd1?.move()
-            gnd2?.move()
-            gnd3?.move()
-            rgnd1?.move()
-            rgnd2?.move()
-            rgnd3?.move()
-            rgnd4?.move()
+        
+            //wall?.move()
+        
+           // gnd1?.move()
+            //gnd2?.move()
+           // gnd3?.move()
+           // rgnd1?.move()
+          //  rgnd2?.move()
+          //  rgnd3?.move()
+          //  rgnd4?.move()
             cloudbg1?.move()
             cloudbg2?.move()
             cloudbg3?.move()
@@ -222,14 +319,14 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
         cloudbg2?.moveBG(camera: mainCamera!)
         cloudbg3?.moveBG(camera: mainCamera!)
         
-        gnd1?.moveGND(camera: mainCamera!)
-        gnd2?.moveGND(camera: mainCamera!)
-        gnd3?.moveGND(camera: mainCamera!)
+       // gnd1?.moveGND(camera: mainCamera!)
+       // gnd2?.moveGND(camera: mainCamera!)
+       // gnd3?.moveGND(camera: mainCamera!)
         
-        rgnd1?.moveGND(camera: mainCamera!)
-        rgnd2?.moveGND(camera: mainCamera!)
-        rgnd3?.moveGND(camera: mainCamera!)
-        rgnd4?.moveGND(camera: mainCamera!)
+       // rgnd1?.moveGND(camera: mainCamera!)
+       // rgnd2?.moveGND(camera: mainCamera!)
+       // rgnd3?.moveGND(camera: mainCamera!)
+       // rgnd4?.moveGND(camera: mainCamera!)
     }
     
     private func reverseGravity(){
@@ -254,7 +351,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnItems() {
-        self.scene?.addChild(itemController.spawnItems(camera: mainCamera!))
+       // self.scene?.addChild(itemController.spawnItems(camera: mainCamera!))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -290,7 +387,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate {
 
     func playerDidCollideWithWall() {
         player?.animateCatClimb()
-    
+        constantSpeed = 0
         //monstersDestroyed += 1
         //if (monstersDestroyed > 100) {
         //    let reveal = SKTransition.flipHorizontal(withDuration: 0.5)

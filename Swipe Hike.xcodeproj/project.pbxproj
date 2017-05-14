@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E34D0A151EC635AE00E0E302 /* dummyInsect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D0A141EC635AE00E0E302 /* dummyInsect.swift */; };
 		E35A8AF61EC5464800CA942E /* FirstLevelWalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */; };
 		E35A8AF81EC5F81B00CA942E /* Danger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A8AF71EC5F81B00CA942E /* Danger.swift */; };
 		E35A8AFA1EC5FE4100CA942E /* FirstLevelDangers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E34D0A141EC635AE00E0E302 /* dummyInsect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummyInsect.swift; sourceTree = "<group>"; };
 		E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelWalls.txt; sourceTree = "<group>"; };
 		E35A8AF71EC5F81B00CA942E /* Danger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
 		E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelDangers.txt; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				E379B1A31EC5307000B02D1E /* Levels.swift */,
 				E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */,
 				E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */,
+				E34D0A141EC635AE00E0E302 /* dummyInsect.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				E379B1A41EC5307000B02D1E /* Levels.swift in Sources */,
 				E35CFEFB1EC1F5E800A89DDD /* ItemController.swift in Sources */,
+				E34D0A151EC635AE00E0E302 /* dummyInsect.swift in Sources */,
 				E35CFEEA1EBFB45700A89DDD /* GameplayScene.swift in Sources */,
 				E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */,
 				E35CFED51EBFAF4800A89DDD /* GameViewController.swift in Sources */,
