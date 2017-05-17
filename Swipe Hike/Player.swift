@@ -8,21 +8,17 @@
 
 import SpriteKit
 
-//struct ColliderType {
-  //  static let PLAYER: UInt32 = 0
-   // static let GND: UInt32 = 1
-   // static let DANGER: UInt32 = 2
-//}
-
 class Player: SKSpriteNode {
     
     private var playerAnimation = [SKTexture]()
     private var animatePlayerAction = SKAction()
     private var catClimbingFrames : [SKTexture]!
+    private var busy: Bool = false
     
     private var onGND: Int = 0
     
     func initializePlayer(){
+        busy = false
         name = "Player"
         
         let catAnimatedAtlas = SKTextureAtlas(named: "myAtlas1")
@@ -39,7 +35,8 @@ class Player: SKSpriteNode {
         
         let firstFrame = catClimbingFrames[0]
         self.texture = firstFrame
-        
+        self.size.height = 100
+        self.size.width = 80
         physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width-10, height: self.size.height-10))
         //might change upon death?
         physicsBody?.affectedByGravity = true
@@ -78,7 +75,7 @@ class Player: SKSpriteNode {
     func animateCatJump(){
         self.removeAllActions()
         onGND = 0
-        let temp = SKAction.setTexture(SKTexture(imageNamed: "tempJump"))
+        let temp = SKAction.setTexture(SKTexture(imageNamed: "CatJump1"))
         run(temp)
         
        // run(SKAction.repeatForever(
@@ -90,5 +87,14 @@ class Player: SKSpriteNode {
     }
     func reversePlayer(){
         //self.xScale *= -1
+    }
+    func checkBusy() -> Bool{
+        return busy
+    }
+    func changeBusyT(){
+        busy = true
+    }
+    func changeBusyF(){
+        busy = false
     }
 }

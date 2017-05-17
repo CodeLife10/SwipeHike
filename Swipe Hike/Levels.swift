@@ -9,18 +9,10 @@
 import Foundation
 
 protocol Levels {
-    //var orderNumber: Int {get set}
-    //var arrayOfStrings: [String]? {get set}
     var wallFileName: String {get}
     var dangerFileName: String {get}
-    //func restartHappens()
-    //func getLevelFile(fileName: String)
-    //func restartHappens()
-    //func getLevelFile()
-    
 }
 extension Levels{
-    //hmm
     func restartHappens() -> Int{
         return 0
     }
@@ -63,10 +55,26 @@ class Level1: Levels {
     var dangerFileName: String = "FirstLevelDangers"
 }
 
+class Level2: Levels {
+    var wallFileName: String = "SecondLevelWalls"
+    var dangerFileName: String = "SecondLevelDangers"
+}
+
+class Level3: Levels{
+    var wallFileName: String = "ThirdLevelWalls"
+    var dangerFileName: String = "ThirdLevelDangers"
+}
+
 class LevelFactory {
     func initialiseLevel(levelN: String) -> Levels?{
         if(levelN == "FirstLevel"){
             return Level1()
+        }
+        else if(levelN == "SecondLevel"){
+            return Level2()
+        }
+        else if(levelN == "ThirdLevel"){
+            return Level3()
         }
         else{
             return nil

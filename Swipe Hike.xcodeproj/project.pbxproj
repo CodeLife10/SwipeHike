@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E34D0A151EC635AE00E0E302 /* dummyInsect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D0A141EC635AE00E0E302 /* dummyInsect.swift */; };
+		E34E93B81ECB447800C4C56C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E93B71ECB447800C4C56C /* Menu.swift */; };
+		E34E93BA1ECB4CE900C4C56C /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E34E93B91ECB4CE900C4C56C /* MenuScene.sks */; };
 		E35A8AF61EC5464800CA942E /* FirstLevelWalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */; };
 		E35A8AF81EC5F81B00CA942E /* Danger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35A8AF71EC5F81B00CA942E /* Danger.swift */; };
 		E35A8AFA1EC5FE4100CA942E /* FirstLevelDangers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */; };
@@ -24,17 +25,37 @@
 		E35CFEF31EBFDE2300A89DDD /* BGClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEF21EBFDE2300A89DDD /* BGClass.swift */; };
 		E35CFEF51EBFE36100A89DDD /* GNDClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEF41EBFE36100A89DDD /* GNDClass.swift */; };
 		E35CFEF71EC0AB8C00A89DDD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEF61EC0AB8B00A89DDD /* Player.swift */; };
-		E35CFEFB1EC1F5E800A89DDD /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */; };
 		E35CFEFD1EC1FEE800A89DDD /* Coin.png in Resources */ = {isa = PBXBuildFile; fileRef = E35CFEFC1EC1FEE800A89DDD /* Coin.png */; };
 		E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */; };
+		E36A93E81ECC0AE90048F7E3 /* SecondLevelWalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = E36A93E71ECC0AE90048F7E3 /* SecondLevelWalls.txt */; };
+		E36A93EA1ECC0AEF0048F7E3 /* SecondLevelDangers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E36A93E91ECC0AEF0048F7E3 /* SecondLevelDangers.txt */; };
+		E36A93EC1ECC0AF70048F7E3 /* ThirdLevelWalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = E36A93EB1ECC0AF70048F7E3 /* ThirdLevelWalls.txt */; };
+		E36A93EE1ECC0AFD0048F7E3 /* ThirdLevelDangers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E36A93ED1ECC0AFD0048F7E3 /* ThirdLevelDangers.txt */; };
 		E379B17B1EC3389B00B02D1E /* CloudBNG.png in Resources */ = {isa = PBXBuildFile; fileRef = E379B17A1EC3389B00B02D1E /* CloudBNG.png */; };
 		E379B1A01EC38CC200B02D1E /* myAtlas1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E379B19F1EC38CC100B02D1E /* myAtlas1.atlas */; };
-		E379B1A21EC3B38500B02D1E /* tempJump.png in Resources */ = {isa = PBXBuildFile; fileRef = E379B1A11EC3B38400B02D1E /* tempJump.png */; };
 		E379B1A41EC5307000B02D1E /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E379B1A31EC5307000B02D1E /* Levels.swift */; };
+		E3B236B31ECB799000D32554 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E3B236B21ECB799000D32554 /* HelpScene.sks */; };
+		E3B236B71ECBD2C200D32554 /* CatJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236B61ECBD2C200D32554 /* CatJump1.png */; };
+		E3B236BB1ECBD82D00D32554 /* Tree1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236BA1ECBD82D00D32554 /* Tree1.png */; };
+		E3B236BD1ECBD9F700D32554 /* Tree2.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236BC1ECBD9F700D32554 /* Tree2.png */; };
+		E3B236BF1ECBDBC100D32554 /* Tree3.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236BE1ECBDBC100D32554 /* Tree3.png */; };
+		E3B236C11ECBDD5400D32554 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236C01ECBDD5400D32554 /* PlayButton.png */; };
+		E3B236C31ECBDDAE00D32554 /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236C21ECBDDAE00D32554 /* HelpButton.png */; };
+		E3B236C51ECBDDEC00D32554 /* Level1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236C41ECBDDEC00D32554 /* Level1.png */; };
+		E3B236C71ECBDE0900D32554 /* Level2.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236C61ECBDE0900D32554 /* Level2.png */; };
+		E3B236C91ECBDE2D00D32554 /* Level3.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236C81ECBDE2D00D32554 /* Level3.png */; };
+		E3B236CB1ECBDF3800D32554 /* LevelExit.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236CA1ECBDF3800D32554 /* LevelExit.png */; };
+		E3B236CD1ECBDFC800D32554 /* Tree4.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236CC1ECBDFC800D32554 /* Tree4.png */; };
+		E3B236CF1ECBE2E300D32554 /* Explain.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236CE1ECBE2E300D32554 /* Explain.png */; };
+		E3B236D11ECBE6E400D32554 /* WinScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E3B236D01ECBE6E400D32554 /* WinScene.sks */; };
+		E3B236D31ECBE7AB00D32554 /* youWin.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236D21ECBE7AB00D32554 /* youWin.png */; };
+		E3B236D51ECBEF0100D32554 /* FinishLine.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B236D41ECBEF0000D32554 /* FinishLine.png */; };
+		E3B236D71ECBEFCA00D32554 /* LevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E3B236D61ECBEFCA00D32554 /* LevelScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E34D0A141EC635AE00E0E302 /* dummyInsect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummyInsect.swift; sourceTree = "<group>"; };
+		E34E93B71ECB447800C4C56C /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		E34E93B91ECB4CE900C4C56C /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelWalls.txt; sourceTree = "<group>"; };
 		E35A8AF71EC5F81B00CA942E /* Danger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
 		E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstLevelDangers.txt; sourceTree = "<group>"; };
@@ -53,14 +74,33 @@
 		E35CFEF21EBFDE2300A89DDD /* BGClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGClass.swift; sourceTree = "<group>"; };
 		E35CFEF41EBFE36100A89DDD /* GNDClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNDClass.swift; sourceTree = "<group>"; };
 		E35CFEF61EC0AB8B00A89DDD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		E35CFEFC1EC1FEE800A89DDD /* Coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin.png; sourceTree = "<group>"; };
 		E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSwipeRecogniser.swift; sourceTree = "<group>"; };
 		E35CFF001EC22BCA00A89DDD /* Swipe Hike-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swipe Hike-Bridging-Header.h"; sourceTree = "<group>"; };
+		E36A93E71ECC0AE90048F7E3 /* SecondLevelWalls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SecondLevelWalls.txt; sourceTree = "<group>"; };
+		E36A93E91ECC0AEF0048F7E3 /* SecondLevelDangers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SecondLevelDangers.txt; sourceTree = "<group>"; };
+		E36A93EB1ECC0AF70048F7E3 /* ThirdLevelWalls.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ThirdLevelWalls.txt; sourceTree = "<group>"; };
+		E36A93ED1ECC0AFD0048F7E3 /* ThirdLevelDangers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ThirdLevelDangers.txt; sourceTree = "<group>"; };
 		E379B17A1EC3389B00B02D1E /* CloudBNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloudBNG.png; sourceTree = "<group>"; };
 		E379B19F1EC38CC100B02D1E /* myAtlas1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = myAtlas1.atlas; sourceTree = "<group>"; };
-		E379B1A11EC3B38400B02D1E /* tempJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tempJump.png; sourceTree = "<group>"; };
 		E379B1A31EC5307000B02D1E /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		E3B236B21ECB799000D32554 /* HelpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HelpScene.sks; sourceTree = "<group>"; };
+		E3B236B61ECBD2C200D32554 /* CatJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CatJump1.png; sourceTree = "<group>"; };
+		E3B236BA1ECBD82D00D32554 /* Tree1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree1.png; sourceTree = "<group>"; };
+		E3B236BC1ECBD9F700D32554 /* Tree2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree2.png; sourceTree = "<group>"; };
+		E3B236BE1ECBDBC100D32554 /* Tree3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree3.png; sourceTree = "<group>"; };
+		E3B236C01ECBDD5400D32554 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
+		E3B236C21ECBDDAE00D32554 /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		E3B236C41ECBDDEC00D32554 /* Level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Level1.png; sourceTree = "<group>"; };
+		E3B236C61ECBDE0900D32554 /* Level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Level2.png; sourceTree = "<group>"; };
+		E3B236C81ECBDE2D00D32554 /* Level3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Level3.png; sourceTree = "<group>"; };
+		E3B236CA1ECBDF3800D32554 /* LevelExit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelExit.png; sourceTree = "<group>"; };
+		E3B236CC1ECBDFC800D32554 /* Tree4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree4.png; sourceTree = "<group>"; };
+		E3B236CE1ECBE2E300D32554 /* Explain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Explain.png; sourceTree = "<group>"; };
+		E3B236D01ECBE6E400D32554 /* WinScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WinScene.sks; sourceTree = "<group>"; };
+		E3B236D21ECBE7AB00D32554 /* youWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youWin.png; sourceTree = "<group>"; };
+		E3B236D41ECBEF0000D32554 /* FinishLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FinishLine.png; sourceTree = "<group>"; };
+		E3B236D61ECBEFCA00D32554 /* LevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +153,10 @@
 				E379B1A31EC5307000B02D1E /* Levels.swift */,
 				E35A8AF91EC5FE4100CA942E /* FirstLevelDangers.txt */,
 				E35A8AF51EC5464800CA942E /* FirstLevelWalls.txt */,
-				E34D0A141EC635AE00E0E302 /* dummyInsect.swift */,
+				E36A93E71ECC0AE90048F7E3 /* SecondLevelWalls.txt */,
+				E36A93E91ECC0AEF0048F7E3 /* SecondLevelDangers.txt */,
+				E36A93EB1ECC0AF70048F7E3 /* ThirdLevelWalls.txt */,
+				E36A93ED1ECC0AFD0048F7E3 /* ThirdLevelDangers.txt */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -122,6 +165,10 @@
 			isa = PBXGroup;
 			children = (
 				E35CFEE71EBFB3DD00A89DDD /* GameplayScene.sks */,
+				E34E93B91ECB4CE900C4C56C /* MenuScene.sks */,
+				E3B236B21ECB799000D32554 /* HelpScene.sks */,
+				E3B236D01ECBE6E400D32554 /* WinScene.sks */,
+				E3B236D61ECBEFCA00D32554 /* LevelScene.sks */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -133,10 +180,10 @@
 				E35CFEF21EBFDE2300A89DDD /* BGClass.swift */,
 				E35CFEF41EBFE36100A89DDD /* GNDClass.swift */,
 				E35CFEF61EC0AB8B00A89DDD /* Player.swift */,
-				E35CFEFA1EC1F5E700A89DDD /* ItemController.swift */,
 				E35CFEFE1EC219C100A89DDD /* CustomSwipeRecogniser.swift */,
 				E35CFF001EC22BCA00A89DDD /* Swipe Hike-Bridging-Header.h */,
 				E35A8AF71EC5F81B00CA942E /* Danger.swift */,
+				E34E93B71ECB447800C4C56C /* Menu.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -149,8 +196,21 @@
 				E35CFEF01EBFC56B00A89DDD /* GND1.png */,
 				E35CFEEE1EBFBDD300A89DDD /* BG1.png */,
 				E35CFEFC1EC1FEE800A89DDD /* Coin.png */,
+				E3B236CC1ECBDFC800D32554 /* Tree4.png */,
 				E35A8AFB1EC600C000CA942E /* Spike1.png */,
-				E379B1A11EC3B38400B02D1E /* tempJump.png */,
+				E3B236BA1ECBD82D00D32554 /* Tree1.png */,
+				E3B236BC1ECBD9F700D32554 /* Tree2.png */,
+				E3B236BE1ECBDBC100D32554 /* Tree3.png */,
+				E3B236B61ECBD2C200D32554 /* CatJump1.png */,
+				E3B236C01ECBDD5400D32554 /* PlayButton.png */,
+				E3B236C21ECBDDAE00D32554 /* HelpButton.png */,
+				E3B236C41ECBDDEC00D32554 /* Level1.png */,
+				E3B236C61ECBDE0900D32554 /* Level2.png */,
+				E3B236C81ECBDE2D00D32554 /* Level3.png */,
+				E3B236CA1ECBDF3800D32554 /* LevelExit.png */,
+				E3B236D21ECBE7AB00D32554 /* youWin.png */,
+				E3B236CE1ECBE2E300D32554 /* Explain.png */,
+				E3B236D41ECBEF0000D32554 /* FinishLine.png */,
 			);
 			name = png;
 			sourceTree = "<group>";
@@ -217,18 +277,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35CFED81EBFAF4900A89DDD /* Main.storyboard in Resources */,
+				E3B236BB1ECBD82D00D32554 /* Tree1.png in Resources */,
+				E3B236C11ECBDD5400D32554 /* PlayButton.png in Resources */,
+				E36A93EC1ECC0AF70048F7E3 /* ThirdLevelWalls.txt in Resources */,
 				E35CFEEF1EBFBDD300A89DDD /* BG1.png in Resources */,
 				E35A8AFC1EC600C100CA942E /* Spike1.png in Resources */,
 				E35CFEDA1EBFAF4900A89DDD /* Assets.xcassets in Resources */,
 				E35CFEFD1EC1FEE800A89DDD /* Coin.png in Resources */,
+				E3B236C71ECBDE0900D32554 /* Level2.png in Resources */,
+				E3B236D31ECBE7AB00D32554 /* youWin.png in Resources */,
 				E35CFEF11EBFC56B00A89DDD /* GND1.png in Resources */,
-				E379B1A21EC3B38500B02D1E /* tempJump.png in Resources */,
+				E3B236B71ECBD2C200D32554 /* CatJump1.png in Resources */,
 				E35A8AF61EC5464800CA942E /* FirstLevelWalls.txt in Resources */,
+				E3B236CF1ECBE2E300D32554 /* Explain.png in Resources */,
+				E36A93EE1ECC0AFD0048F7E3 /* ThirdLevelDangers.txt in Resources */,
+				E3B236B31ECB799000D32554 /* HelpScene.sks in Resources */,
 				E35A8AFA1EC5FE4100CA942E /* FirstLevelDangers.txt in Resources */,
+				E3B236D51ECBEF0100D32554 /* FinishLine.png in Resources */,
 				E35CFEDD1EBFAF4900A89DDD /* LaunchScreen.storyboard in Resources */,
 				E379B17B1EC3389B00B02D1E /* CloudBNG.png in Resources */,
+				E3B236C51ECBDDEC00D32554 /* Level1.png in Resources */,
+				E36A93E81ECC0AE90048F7E3 /* SecondLevelWalls.txt in Resources */,
+				E3B236C91ECBDE2D00D32554 /* Level3.png in Resources */,
 				E379B1A01EC38CC200B02D1E /* myAtlas1.atlas in Resources */,
+				E3B236CB1ECBDF3800D32554 /* LevelExit.png in Resources */,
+				E3B236CD1ECBDFC800D32554 /* Tree4.png in Resources */,
 				E35CFEE81EBFB3DD00A89DDD /* GameplayScene.sks in Resources */,
+				E3B236BF1ECBDBC100D32554 /* Tree3.png in Resources */,
+				E3B236BD1ECBD9F700D32554 /* Tree2.png in Resources */,
+				E3B236D11ECBE6E400D32554 /* WinScene.sks in Resources */,
+				E36A93EA1ECC0AEF0048F7E3 /* SecondLevelDangers.txt in Resources */,
+				E3B236C31ECBDDAE00D32554 /* HelpButton.png in Resources */,
+				E34E93BA1ECB4CE900C4C56C /* MenuScene.sks in Resources */,
+				E3B236D71ECBEFCA00D32554 /* LevelScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,11 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E379B1A41EC5307000B02D1E /* Levels.swift in Sources */,
-				E35CFEFB1EC1F5E800A89DDD /* ItemController.swift in Sources */,
-				E34D0A151EC635AE00E0E302 /* dummyInsect.swift in Sources */,
 				E35CFEEA1EBFB45700A89DDD /* GameplayScene.swift in Sources */,
 				E35CFEFF1EC219C100A89DDD /* CustomSwipeRecogniser.swift in Sources */,
 				E35CFED51EBFAF4800A89DDD /* GameViewController.swift in Sources */,
+				E34E93B81ECB447800C4C56C /* Menu.swift in Sources */,
 				E35CFECD1EBFAF4800A89DDD /* AppDelegate.swift in Sources */,
 				E35A8AF81EC5F81B00CA942E /* Danger.swift in Sources */,
 				E35CFEF31EBFDE2300A89DDD /* BGClass.swift in Sources */,
