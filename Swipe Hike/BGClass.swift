@@ -19,5 +19,4 @@ class BGClass: SKSpriteNode {
         //(-1)
         self.position.y += -1
     }
-
 }

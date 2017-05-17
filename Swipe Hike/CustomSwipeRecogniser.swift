@@ -24,6 +24,8 @@ class CustomSwipeRecogniser: UIGestureRecognizer {
         
         case Top
         case Bottom
+        
+        case singleTouch
     }
     
     var startPoint:CGPoint = CGPoint(x: 0.0, y: 0.0)
@@ -63,7 +65,7 @@ class CustomSwipeRecogniser: UIGestureRecognizer {
             
             //moveX and moveY is a Float, so self.distanceForSwipeGesture needs to be a Float also
             if abs(moveX) < self.requiredDistance {
-                return
+                directionMade = .singleTouch
             }
             //directionMade = curDirection
             self.state = .ended
